@@ -42,7 +42,7 @@ COPY --from=builder /app/public ./public
 
 # Copy environment variables from builder stage
 ENV NEXTAUTH_SECRET="HABEMUS PAPAM"
-ENV NEXTAUTH_URL="http://localhost:3000"
+ENV NEXTAUTH_URL="https://popeleoxiv.bio"
 ENV SKIP_ENV_VALIDATION=1
 
 # Expose the port the app runs on
