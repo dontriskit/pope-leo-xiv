@@ -49,3 +49,4 @@ ENV SKIP_ENV_VALIDATION=1
 EXPOSE 3000
 
 # Start the application
+CMD ["pnpm", "start"]
