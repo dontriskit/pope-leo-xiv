@@ -79,6 +79,9 @@ export default function Footer() {
           <p className="text-base text-gray-400 xl:text-center">
             © 2025 Pope Leo XIV Tribute Site. Developed with dedication.
           </p>
+          <p className="text-base text-gray-400 xl:text-center mt-2">
+            Made with love by bimbi & dontriskit <a href="https://github.com/dontriskit" className="hover:text-white">https://github.com/dontriskit</a> <a href="https://github.com/bimbx" className="hover:text-white">https://github.com/bimbx</a>
+          </p>
         </div>
       </div>
     </footer>
