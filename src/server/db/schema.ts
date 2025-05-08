@@ -10,26 +10,27 @@ import { type AdapterAccount } from "next-auth/adapters";
  */
 export const createTable = pgTableCreator((name) => `popeleo_${name}`);
 
-export const posts = createTable(
-  "post",
-  (d) => ({
-    id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
-    name: d.varchar({ length: 256 }),
-    createdById: d
-      .varchar({ length: 255 })
-      .notNull()
-      .references(() => users.id),
-    createdAt: d
-      .timestamp({ withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
-  }),
-  (t) => [
-    index("created_by_idx").on(t.createdById),
-    index("name_idx").on(t.name),
-  ],
-);
+// Removed the posts table
+// export const posts = createTable(
+//   "post",
+//   (d) => ({
+//     id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
+//     name: d.varchar({ length: 256 }),
+//     createdById: d
+//       .varchar({ length: 255 })
+//       .notNull()
+//       .references(() => users.id),
+//     createdAt: d
+//       .timestamp({ withTimezone: true })
+//       .default(sql`CURRENT_TIMESTAMP`)
+//       .notNull(),
+//     updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
+//   }),
+//   (t) => [
+//     index("created_by_idx").on(t.createdById),
+//     index("name_idx").on(t.name),
+//   ],
+// );
 
 export const users = createTable("user", (d) => ({
   id: d
@@ -50,6 +51,8 @@ export const users = createTable("user", (d) => ({
 
 export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
+  // Removed relation to posts
+  // posts: many(posts),
 }));
 
 export const accounts = createTable(
@@ -90,7 +93,7 @@ export const sessions = createTable(
       .references(() => users.id),
     expires: d.timestamp({ mode: "date", withTimezone: true }).notNull(),
   }),
-  (t) => [index("t_user_id_idx").on(t.userId)],
+  (t) => [index("session_user_id_idx").on(t.userId)], // Updated index name
 );
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({

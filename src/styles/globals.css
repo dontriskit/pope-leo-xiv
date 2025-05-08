@@ -4,3 +4,18 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Removed default gradient background */
+/* body {
+  @apply bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white;
+} */
+
+/* Optional: Set a default background */
+ body {
+   @apply bg-white text-gray-900; /* Example: white background, dark text */
+ }
+
+/* Ensure scroll margin for sections targeted by anchor links */
+section {
+    scroll-margin-top: 5rem; /* Adjust value based on your sticky header height */
+}
