@@ -21,7 +21,7 @@ ENV SKIP_ENV_VALIDATION=1
 
 # Build the application
 #RUN NODE_OPTIONS="--experimental-json-modules" pnpm run build:fast
-RUN NODE_OPTIONS="--experimental-json-modules" pnpm run build:prod
+RUN NODE_OPTIONS="--experimental-json-modules" pnpm run build
 # Production image, copy all the files and run next
 FROM node:18-alpine AS runner
 
